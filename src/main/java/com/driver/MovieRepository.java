@@ -57,6 +57,13 @@ public class MovieRepository {
          if(movieDB.containsKey(key)){
              return movieDB.get(name);
          }
+         for(List<Movie> x:assignedDB.values()){
+             for(Movie m:x){
+                 if(m.getName()==name){
+                     return m;
+                 }
+             }
+         }
          return null;
     }
 
@@ -83,5 +90,18 @@ public class MovieRepository {
     public String addMovie(Movie movie) {
         movieDB.put(movie.getName(),movie);
         return "success";
+    }
+
+    public List<Movie> getMoviesByDirectorName(String name) {
+        Director ans=null;
+        for(Director d:assignedDB.keySet()){
+            if(d.getName()==name){
+                ans=d;
+            }
+        }
+        if(ans==null){
+            return null;
+        }
+        return assignedDB.get(ans);
     }
 }
