@@ -1,18 +1,47 @@
 package com.driver;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 public class MovieService {
+    @Autowired
+    MovieRepository movieRepository;
     public String addMovie(Movie movie) {
+        String result=movieRepository.addMovie(movie);
+        return result;
     }
 
     public String addDirector(Director director) {
+        String result=movieRepository.addDirector(director);
+        return result;
     }
 
     public String addMovieDirectorPair(Pair pair) {
+        String result=movieRepository.addMovieDirectorPair(pair);
+        return result;
     }
 
     public Movie getMovieByName(String name) {
+        Movie movie=movieRepository.getMovieByName(name);
+        return movie;
     }
 
     public Director getDirectorByName(String name) {
+        Director director=movieRepository.getDirectorByName();
+        return director;
+    }
+
+    public List<Movie> findAllMovies() {
+        List list=movieRepository.findAllMovies();
+        return list;
+    }
+
+    public void deleteDirectorByName(String name) {
+        movieRepository.deleteDirectorByName(name);
+    }
+
+    public void deleteAllDirectors() {
+        movieRepository.deleteAllDirectors();
     }
 }

@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class MovieController {
     @Autowired
@@ -46,6 +49,25 @@ public class MovieController {
         }
         return new ResponseEntity<>(director,HttpStatus.FOUND);
     }
+
+    @GetMapping("/get-all-movies")
+    public ResponseEntity<List<Movie>> findAllMovies(){
+        List<Movie> list=movieService.findAllMovies();
+        return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-director-by-name")
+    public ResponseEntity<String> deleteDirectorByName(@RequestParam("name") String name){
+        movieService.deleteDirectorByName(name);
+        return new ResponseEntity<>("success",HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-all-directors")
+    public ResponseEntity<String> deleteAllDirectors(){
+        movieService.deleteAllDirectors();
+        return new ResponseEntity<>("success",HttpStatus.OK);
+    }
+
 }
 
 
