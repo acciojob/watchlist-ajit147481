@@ -3,6 +3,7 @@ package com.driver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class MovieService {
@@ -33,8 +34,8 @@ public class MovieService {
         return director;
     }
 
-    public List<Movie> findAllMovies() {
-        List<Movie> list=movieRepository.findAllMovies();
+    public List<String> findAllMovies() {
+        List<String> list=movieRepository.findAllMovies();
         return list;
     }
 
@@ -46,8 +47,8 @@ public class MovieService {
         movieRepository.deleteAllDirectors();
     }
 
-    public List<Movie> getMoviesByDirectorName(String name) {
-        List<Movie> list=movieRepository.getMoviesByDirectorName(name);
+    public List<String> getMoviesByDirectorName(String name) {
+        List<String> list=movieRepository.getMoviesByDirectorName(name);
         return list;
     }
 }

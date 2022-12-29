@@ -28,13 +28,15 @@ public class MovieRepository {
         }
     }
 
-    public List<Movie> findAllMovies() {
-        List<Movie> movieList=new ArrayList<>();
+    public List<String> findAllMovies() {
+        List<String> movieList=new ArrayList<>();
         for(Movie m:movieDB.values()){
-            movieList.add(m);
+            movieList.add(m.getName());
         }
         for(List<Movie> m:assignedDB.values()){
-            movieList.addAll(m);
+            for(Movie x:m){
+                movieList.add(x.getName());
+            }
         }
         return movieList;
     }
@@ -90,12 +92,13 @@ public class MovieRepository {
         return "success";
     }
 
-    public List<Movie> getMoviesByDirectorName(String name) {
-        Director ans=null;
-        List<Movie> movieList=new ArrayList<>();
+    public List<String> getMoviesByDirectorName(String name) {
+        List<String> movieList=new ArrayList<>();
         for(Director d:assignedDB.keySet()){
             if(d.getName()==name){
-                movieList.addAll(assignedDB.get(d));
+                for(Movie m:assignedDB.get(d)){
+                    movieList.add(m.getName());
+                }
             }
         }
         return movieList;
