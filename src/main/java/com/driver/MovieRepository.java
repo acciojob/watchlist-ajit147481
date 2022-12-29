@@ -92,14 +92,12 @@ public class MovieRepository {
 
     public List<Movie> getMoviesByDirectorName(String name) {
         Director ans=null;
+        List<Movie> movieList=new ArrayList<>();
         for(Director d:assignedDB.keySet()){
             if(d.getName()==name){
-                ans=d;
+                movieList.addAll(assignedDB.get(d));
             }
         }
-        if(ans==null){
-            return null;
-        }
-        return assignedDB.get(ans);
+        return movieList;
     }
 }
