@@ -73,6 +73,7 @@ public class MovieController {
     public ResponseEntity<List<String>> getMoviesByDirectorName(@RequestParam("name") String name){
         List<String> list = movieService.getMoviesByDirectorName(name);
         return new ResponseEntity<>(list,HttpStatus.OK);
+        //gettin all moviesgit a
     }
 
 }
