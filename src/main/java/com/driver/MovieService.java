@@ -18,8 +18,8 @@ public class MovieService {
         return result;
     }
 
-    public String addMovieDirectorPair(Pair pair) {
-        String result=movieRepository.addMovieDirectorPair(pair);
+    public String addMovieDirectorPair(String movieName,String directorName) {
+        String result=movieRepository.addMovieDirectorPair(movieName,directorName);
         return result;
     }
 

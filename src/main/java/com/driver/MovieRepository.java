@@ -67,9 +67,7 @@ public class MovieRepository {
          return null;
     }
 
-    public String addMovieDirectorPair(Pair pair) {
-       String directorName=pair.getDirectorName();
-       String movieName=pair.getMovieName();
+    public String addMovieDirectorPair(String movieName,String directorName){
        if(directorDB.containsKey(directorName)){
            List<Movie> movieList=new ArrayList<>();
            movieList.add(movieDB.remove(movieName));//added in movielist
